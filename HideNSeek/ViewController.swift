@@ -200,7 +200,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             hideButton.isHidden = true
             timerLabel.isHidden = false
             time = 0
-            timerLabel.text = "\(time)"
+            timerLabel.text = printTime()
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
         }
         else{
@@ -211,7 +211,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func updateTimer(){
         time += 1
-        timerLabel.text = "\(time)"
+        timerLabel.text = printTime()
+    }
+    
+    func printTime() -> String {
+        var minutes = "00"
+        var seconds = "\(time)"
+        if time >= 60 {
+            if time / 60 < 10 {
+                minutes = "0\(time / 60)"
+            }
+            else {
+                minutes = "\(time / 60)"
+            }
+        }
+        if time % 60 < 10{
+            seconds = "0\(time % 60)"
+        }
+        else {
+            seconds = "\(time % 60)"
+        }
+        return minutes + ":" + seconds
     }
     
 }
