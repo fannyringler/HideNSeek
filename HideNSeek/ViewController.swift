@@ -23,6 +23,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideButton.setTitle("Cache", for: .normal)
         // Set the view's delegate
         sceneView.delegate = self
         
