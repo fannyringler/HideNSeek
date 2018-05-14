@@ -17,13 +17,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let nodeName = "shiba"
     var objectPosition : SCNVector3!
     var object : SCNNode!
+    var time = 0
+    var timer = Timer()
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var hideButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideButton.setTitle("Cache", for: .normal)
+        timerLabel.isHidden = true
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -135,6 +139,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if let node = getParent(hit.node) {
                     hide = true
                     hideButton.isHidden = false
+                    timer.invalidate()
+                    timerLabel.isHidden = true
                     node.removeFromParentNode()
                     return
                 }
@@ -192,10 +198,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         if hide {
             hide = false
             hideButton.isHidden = true
+            timerLabel.isHidden = false
+            time = 0
+            timerLabel.text = "\(time)"
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
         }
         else{
             hide = true
+            timerLabel.isHidden = true
         }
+    }
+    
+    @objc func updateTimer(){
+        time += 1
+        timerLabel.text = "\(time)"
     }
     
 }

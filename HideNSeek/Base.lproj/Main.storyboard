@@ -30,14 +30,23 @@
                                     <action selector="onButtonClick:" destination="BV1-FR-VrT" eventType="touchUpInside" id="FsI-72-7nr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-2G-lau">
+                                <rect key="frame" x="309.5" y="20" width="49.5" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="Akg-Ub-FPQ"/>
+                            <constraint firstItem="4cY-2G-lau" firstAttribute="trailing" secondItem="PDY-Vd-3AN" secondAttribute="trailing" id="D32-hR-J3O"/>
                             <constraint firstItem="PDY-Vd-3AN" firstAttribute="trailing" secondItem="FIj-5s-XLJ" secondAttribute="trailingMargin" id="H4o-d9-DCR"/>
                             <constraint firstAttribute="bottom" secondItem="PDY-Vd-3AN" secondAttribute="bottom" constant="20" symbolic="YES" id="Kb3-sd-r4M"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="FIj-5s-XLJ" secondAttribute="top" id="Q1m-Ut-HD0"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="FIj-5s-XLJ" secondAttribute="leading" id="WDT-nM-op7"/>
+                            <constraint firstItem="4cY-2G-lau" firstAttribute="top" secondItem="gwE-AE-Ae6" secondAttribute="top" id="XxF-iE-sGr"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="gwE-AE-Ae6" secondAttribute="bottom" id="qZw-EN-j8R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gwE-AE-Ae6"/>
@@ -45,6 +54,7 @@
                     <connections>
                         <outlet property="hideButton" destination="PDY-Vd-3AN" id="h3q-yp-wkC"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="timerLabel" destination="4cY-2G-lau" id="M6x-dO-jrw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
