@@ -16,6 +16,7 @@
 		F084120120A97EB000BB9ED6 /* HideNSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120020A97EB000BB9ED6 /* HideNSeekTests.swift */; };
 		F084120C20A97EB000BB9ED6 /* HideNSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */; };
 		F08596CD20AADD870081D294 /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08596CC20AADD870081D294 /* VictoryViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,7 @@
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
 				F08596CD20AADD870081D294 /* VictoryViewController.swift in Sources */,
 				F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */,
+				F09D0D1920A9CCE700A5F954 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
