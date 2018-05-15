@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HuC-Zd-cPt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -62,113 +62,56 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="qyp-ve-tqW">
+        <!--Victory View Controller-->
+        <scene sceneID="PiE-qH-VBf">
             <objects>
-                <viewController storyboardIdentifier="about" id="aFM-xh-NnS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fxf-kp-frW">
+                <viewController storyboardIdentifier="victory" id="FfK-HU-iIF" customClass="VictoryViewController" customModule="HideNSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRY-d7-JaJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2m-Rs-XaZ">
-                                <rect key="frame" x="309" y="617" width="50" height="30"/>
-                                <state key="normal" title="Accueil">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqv-4j-1Jl">
+                                <rect key="frame" x="306" y="617" width="53" height="30"/>
+                                <state key="normal" title="Rejouer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="HuC-Zd-cPt" kind="show" id="xKS-kI-HKa"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="haP-Ou-XNe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A propos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4N-g5-9eH">
-                                <rect key="frame" x="124" y="67" width="127" height="39.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bravo !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykC-Qj-1Lt">
+                                <rect key="frame" x="140" y="272" width="95" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kyC-Ms-UYa">
-                                <rect key="frame" x="42" y="143.5" width="290" height="437.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0i-1f-JrZ">
+                                <rect key="frame" x="166" y="319" width="42" height="28"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">HideNSeek est une application de Réalitée Augmentée développée par Florian JABY et Fanny RINGLER lors du projet de fin d'année de 2ème année IR en mai 2018.  Cette application utilise la réalitée augmentée pour jouer au célèbre jeu cache cache.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="F4N-g5-9eH" firstAttribute="centerX" secondItem="Fxf-kp-frW" secondAttribute="centerX" id="1gr-s9-FKz"/>
-                            <constraint firstItem="W2m-Rs-XaZ" firstAttribute="top" secondItem="kyC-Ms-UYa" secondAttribute="bottom" constant="36" id="5dE-YO-GbS"/>
-                            <constraint firstItem="kyC-Ms-UYa" firstAttribute="top" secondItem="F4N-g5-9eH" secondAttribute="bottom" constant="37" id="CBE-rz-OEf"/>
-                            <constraint firstItem="F4N-g5-9eH" firstAttribute="top" secondItem="1Cy-j2-pSv" secondAttribute="top" constant="47" id="Gfe-hb-aQG"/>
-                            <constraint firstAttribute="bottom" secondItem="W2m-Rs-XaZ" secondAttribute="bottom" constant="20" symbolic="YES" id="LYU-J9-AtE"/>
-                            <constraint firstItem="W2m-Rs-XaZ" firstAttribute="trailing" secondItem="Fxf-kp-frW" secondAttribute="trailingMargin" id="OIj-RP-Hef"/>
-                            <constraint firstItem="kyC-Ms-UYa" firstAttribute="leading" secondItem="1Cy-j2-pSv" secondAttribute="leading" constant="42" id="hOX-9f-nO3"/>
-                            <constraint firstItem="F4N-g5-9eH" firstAttribute="centerX" secondItem="kyC-Ms-UYa" secondAttribute="centerX" id="hx7-rP-ZmT"/>
+                            <constraint firstItem="ykC-Qj-1Lt" firstAttribute="top" secondItem="CTX-bJ-HHk" secondAttribute="top" constant="252" id="1AO-BC-My2"/>
+                            <constraint firstItem="H0i-1f-JrZ" firstAttribute="centerX" secondItem="ykC-Qj-1Lt" secondAttribute="centerX" id="6qi-Rw-Y38"/>
+                            <constraint firstItem="H0i-1f-JrZ" firstAttribute="centerY" secondItem="aRY-d7-JaJ" secondAttribute="centerY" id="B8U-fe-f9C"/>
+                            <constraint firstItem="gqv-4j-1Jl" firstAttribute="trailing" secondItem="aRY-d7-JaJ" secondAttribute="trailingMargin" id="CfV-5B-wg7"/>
+                            <constraint firstItem="ykC-Qj-1Lt" firstAttribute="centerX" secondItem="aRY-d7-JaJ" secondAttribute="centerX" id="DfU-sU-nvq"/>
+                            <constraint firstAttribute="bottom" secondItem="gqv-4j-1Jl" secondAttribute="bottom" constant="20" symbolic="YES" id="hmF-7v-ThP"/>
+                            <constraint firstItem="CTX-bJ-HHk" firstAttribute="bottom" secondItem="H0i-1f-JrZ" secondAttribute="bottom" constant="320" id="wDH-oD-yOw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Cy-j2-pSv"/>
+                        <viewLayoutGuide key="safeArea" id="CTX-bJ-HHk"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="H0i-1f-JrZ" id="hed-0n-sDY"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NUe-zH-FGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUk-5f-Mdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-706.39999999999998" y="859.52023988005999"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="C9J-zy-8EL">
-            <objects>
-                <viewController storyboardIdentifier="home" id="HuC-Zd-cPt" customClass="HomeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GXD-av-EpX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5U-yw-1xq">
-                                <rect key="frame" x="125" y="318" width="124" height="30"/>
-                                <state key="normal" title="Commencer le jeu">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="zhl-4j-fwJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v28-9o-Wb2">
-                                <rect key="frame" x="156" y="617" width="62" height="30"/>
-                                <state key="normal" title="A propos">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="aFM-xh-NnS" kind="show" id="pEQ-Ff-hCO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3O-cL-bdT">
-                                <rect key="frame" x="161" y="369" width="52" height="30"/>
-                                <state key="normal" title="Tutoriel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HideNSeekHome" translatesAutoresizingMaskIntoConstraints="NO" id="3x5-HL-vvP">
-                                <rect key="frame" x="75" y="68" width="225" height="225"/>
-                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="GXD-av-EpX" secondAttribute="centerX" id="5Py-v1-Yfe"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerX" secondItem="I3O-cL-bdT" secondAttribute="centerX" id="S9v-a4-GWL"/>
-                            <constraint firstItem="I3O-cL-bdT" firstAttribute="top" secondItem="N5U-yw-1xq" secondAttribute="bottom" constant="21" id="UkM-B5-ViQ"/>
-                            <constraint firstAttribute="bottom" secondItem="v28-9o-Wb2" secondAttribute="bottom" constant="20" symbolic="YES" id="UqR-WY-2bY"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerY" secondItem="GXD-av-EpX" secondAttribute="centerY" id="XzJ-c8-Aba"/>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="v28-9o-Wb2" secondAttribute="centerX" id="eKo-Sd-o7g"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="top" secondItem="3x5-HL-vvP" secondAttribute="bottom" constant="25" id="iAf-Us-FCV"/>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="N5U-yw-1xq" secondAttribute="centerX" id="xwT-BA-K6u"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="x1t-CA-erT"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dAU-ZL-DAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-706.39999999999998" y="117.39130434782609"/>
+            <point key="canvasLocation" x="816.79999999999995" y="117.39130434782609"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="HideNSeekHome" width="225" height="225"/>
-    </resources>
 </document>

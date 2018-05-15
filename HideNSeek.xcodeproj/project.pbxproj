@@ -15,7 +15,8 @@
 		F08411F620A97EB000BB9ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */; };
 		F084120120A97EB000BB9ED6 /* HideNSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120020A97EB000BB9ED6 /* HideNSeekTests.swift */; };
 		F084120C20A97EB000BB9ED6 /* HideNSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */; };
-		F09D0D1920A9CCE700A5F954 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09D0D1820A9CCE700A5F954 /* HomeViewController.swift */; };
+		F08596CD20AADD870081D294 /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08596CC20AADD870081D294 /* VictoryViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,7 @@
 		F084120720A97EB000BB9ED6 /* HideNSeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HideNSeekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNSeekUITests.swift; sourceTree = "<group>"; };
 		F084120D20A97EB000BB9ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F09D0D1820A9CCE700A5F954 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F08596CC20AADD870081D294 /* VictoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +109,7 @@
 				F08411F220A97EB000BB9ED6 /* Assets.xcassets */,
 				F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */,
 				F08411F720A97EB000BB9ED6 /* Info.plist */,
-				F09D0D1820A9CCE700A5F954 /* HomeViewController.swift */,
+				F08596CC20AADD870081D294 /* VictoryViewController.swift */,
 			);
 			path = HideNSeek;
 			sourceTree = "<group>";
@@ -264,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
+				F08596CD20AADD870081D294 /* VictoryViewController.swift in Sources */,
 				F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */,
 				F09D0D1920A9CCE700A5F954 /* HomeViewController.swift in Sources */,
 			);
