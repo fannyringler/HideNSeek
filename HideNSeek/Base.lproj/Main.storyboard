@@ -62,5 +62,35 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
+        <!--Victory View Controller-->
+        <scene sceneID="PiE-qH-VBf">
+            <objects>
+                <viewController storyboardIdentifier="victory" id="FfK-HU-iIF" customClass="VictoryViewController" customModule="HideNSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRY-d7-JaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0i-1f-JrZ">
+                                <rect key="frame" x="43" y="169" width="270" height="263"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="H0i-1f-JrZ" firstAttribute="top" secondItem="CTX-bJ-HHk" secondAttribute="top" constant="200" id="X5r-yi-GIt"/>
+                            <constraint firstItem="H0i-1f-JrZ" firstAttribute="centerX" secondItem="aRY-d7-JaJ" secondAttribute="centerX" id="zzU-rY-JLn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CTX-bJ-HHk"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="H0i-1f-JrZ" id="hed-0n-sDY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUk-5f-Mdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="117.39130434782609"/>
+        </scene>
     </scenes>
 </document>
