@@ -14,7 +14,7 @@ class VictoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "Bravo vous avez trouvé l'objet en \(time / 60) m \(time % 60) s"
+        label.text = "Vous avez trouvé l'objet en \(time / 60) m \(time % 60) s"
         // Do any additional setup after loading the view.
     }
 
