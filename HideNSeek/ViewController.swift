@@ -82,6 +82,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    //prout
+    
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
         
