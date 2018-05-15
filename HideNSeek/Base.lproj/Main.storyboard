@@ -138,29 +138,27 @@
                                     <segue destination="aFM-xh-NnS" kind="show" id="pEQ-Ff-hCO"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HideNSeekHome.png" translatesAutoresizingMaskIntoConstraints="NO" id="3x5-HL-vvP">
-                                <rect key="frame" x="87" y="65" width="200" height="200"/>
-                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3O-cL-bdT">
                                 <rect key="frame" x="161" y="369" width="52" height="30"/>
                                 <state key="normal" title="Tutoriel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HideNSeekHome" translatesAutoresizingMaskIntoConstraints="NO" id="3x5-HL-vvP">
+                                <rect key="frame" x="75" y="68" width="225" height="225"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="leading" secondItem="x1t-CA-erT" secondAttribute="leading" constant="87" id="1ZY-lW-wMz"/>
-                            <constraint firstItem="v28-9o-Wb2" firstAttribute="centerX" secondItem="N5U-yw-1xq" secondAttribute="centerX" id="471-f6-qNC"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerY" secondItem="GXD-av-EpX" secondAttribute="centerY" id="9Fh-Ze-Zr8"/>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="N5U-yw-1xq" secondAttribute="centerX" id="LTL-Zv-Deb"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="top" secondItem="3x5-HL-vvP" secondAttribute="bottom" constant="53" id="Nxf-EF-uZB"/>
-                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerX" secondItem="GXD-av-EpX" secondAttribute="centerX" id="PwB-mn-YIh"/>
+                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="GXD-av-EpX" secondAttribute="centerX" id="5Py-v1-Yfe"/>
+                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerX" secondItem="I3O-cL-bdT" secondAttribute="centerX" id="S9v-a4-GWL"/>
+                            <constraint firstItem="I3O-cL-bdT" firstAttribute="top" secondItem="N5U-yw-1xq" secondAttribute="bottom" constant="21" id="UkM-B5-ViQ"/>
                             <constraint firstAttribute="bottom" secondItem="v28-9o-Wb2" secondAttribute="bottom" constant="20" symbolic="YES" id="UqR-WY-2bY"/>
-                            <constraint firstItem="I3O-cL-bdT" firstAttribute="centerX" secondItem="N5U-yw-1xq" secondAttribute="centerX" id="liJ-3p-otN"/>
-                            <constraint firstItem="I3O-cL-bdT" firstAttribute="top" secondItem="N5U-yw-1xq" secondAttribute="bottom" constant="21" id="tXy-aM-GUN"/>
-                            <constraint firstItem="3x5-HL-vvP" firstAttribute="top" secondItem="x1t-CA-erT" secondAttribute="top" constant="45" id="zxu-44-NtL"/>
+                            <constraint firstItem="N5U-yw-1xq" firstAttribute="centerY" secondItem="GXD-av-EpX" secondAttribute="centerY" id="XzJ-c8-Aba"/>
+                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="v28-9o-Wb2" secondAttribute="centerX" id="eKo-Sd-o7g"/>
+                            <constraint firstItem="N5U-yw-1xq" firstAttribute="top" secondItem="3x5-HL-vvP" secondAttribute="bottom" constant="25" id="iAf-Us-FCV"/>
+                            <constraint firstItem="3x5-HL-vvP" firstAttribute="centerX" secondItem="N5U-yw-1xq" secondAttribute="centerX" id="xwT-BA-K6u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x1t-CA-erT"/>
                     </view>
@@ -171,6 +169,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HideNSeekHome.png" width="225" height="225"/>
+        <image name="HideNSeekHome" width="225" height="225"/>
     </resources>
 </document>
