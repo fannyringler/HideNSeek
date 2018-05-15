@@ -74,14 +74,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
     func calculateDistance(from:SCNVector3,to:SCNVector3) -> Float{
         let x = from.x - to.x
         let y = from.y - to.y
