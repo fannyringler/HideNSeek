@@ -10,6 +10,8 @@ import UIKit
 import SceneKit
 import ARKit
 
+var time = 0
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     var hide : Bool = true
@@ -17,7 +19,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let nodeName = "shiba"
     var objectPosition : SCNVector3!
     var object : SCNNode!
-    var time = 0
     var timer = Timer()
     
     @IBOutlet var sceneView: ARSCNView!
@@ -142,6 +143,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     timer.invalidate()
                     timerLabel.isHidden = true
                     node.removeFromParentNode()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
+                    self.present(viewController, animated: true, completion: nil)
                     return
                 }
             }
