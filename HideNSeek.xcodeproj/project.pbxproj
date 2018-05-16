@@ -15,6 +15,12 @@
 		F08411F620A97EB000BB9ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */; };
 		F084120120A97EB000BB9ED6 /* HideNSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120020A97EB000BB9ED6 /* HideNSeekTests.swift */; };
 		F084120C20A97EB000BB9ED6 /* HideNSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */; };
+		F0A908C920AB29AB00D98B77 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908C820AB29AB00D98B77 /* Utilities.swift */; };
+		F0A908D020AB29FD00D98B77 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */; };
+		F0A908D120AB29FD00D98B77 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CC20AB29FD00D98B77 /* Gesture.swift */; };
+		F0A908D220AB29FD00D98B77 /* HitTestVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */; };
+		F0A908D320AB29FD00D98B77 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CE20AB29FD00D98B77 /* Plane.swift */; };
+		F0A908D420AB29FD00D98B77 /* PlaneDebugVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,17 @@
 		F084120720A97EB000BB9ED6 /* HideNSeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HideNSeekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNSeekUITests.swift; sourceTree = "<group>"; };
 		F084120D20A97EB000BB9ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0A908C320AB297200D98B77 /* Candle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candle.swift; sourceTree = "<group>"; };
+		F0A908C420AB297200D98B77 /* Chair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chair.swift; sourceTree = "<group>"; };
+		F0A908C520AB297200D98B77 /* Cup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
+		F0A908C620AB297200D98B77 /* Lamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lamp.swift; sourceTree = "<group>"; };
+		F0A908C720AB297200D98B77 /* Vase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vase.swift; sourceTree = "<group>"; };
+		F0A908C820AB29AB00D98B77 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = "../../../Downloads/ARKit-Example-by-Apple-master/ARKitExample/Utilities.swift"; sourceTree = "<group>"; };
+		F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		F0A908CC20AB29FD00D98B77 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitTestVisualization.swift; sourceTree = "<group>"; };
+		F0A908CE20AB29FD00D98B77 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneDebugVisualization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */,
+				F0A908C820AB29AB00D98B77 /* Utilities.swift */,
+				F0A908C220AB297200D98B77 /* Virtual Objects */,
 				F08411EB20A97EAF00BB9ED6 /* art.scnassets */,
 				F08411ED20A97EAF00BB9ED6 /* ViewController.swift */,
+				F0A908CA20AB29FD00D98B77 /* UI Elements */,
 				F08411EF20A97EAF00BB9ED6 /* Main.storyboard */,
 				F08411F220A97EB000BB9ED6 /* Assets.xcassets */,
 				F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */,
@@ -126,6 +146,31 @@
 				F084120D20A97EB000BB9ED6 /* Info.plist */,
 			);
 			path = HideNSeekUITests;
+			sourceTree = "<group>";
+		};
+		F0A908C220AB297200D98B77 /* Virtual Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F0A908C320AB297200D98B77 /* Candle.swift */,
+				F0A908C420AB297200D98B77 /* Chair.swift */,
+				F0A908C520AB297200D98B77 /* Cup.swift */,
+				F0A908C620AB297200D98B77 /* Lamp.swift */,
+				F0A908C720AB297200D98B77 /* Vase.swift */,
+			);
+			path = "Virtual Objects";
+			sourceTree = "<group>";
+		};
+		F0A908CA20AB29FD00D98B77 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */,
+				F0A908CC20AB29FD00D98B77 /* Gesture.swift */,
+				F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */,
+				F0A908CE20AB29FD00D98B77 /* Plane.swift */,
+				F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */,
+			);
+			name = "UI Elements";
+			path = "../../../Downloads/ARKit-Example-by-Apple-master/ARKitExample/UI Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A908C920AB29AB00D98B77 /* Utilities.swift in Sources */,
+				F0A908D420AB29FD00D98B77 /* PlaneDebugVisualization.swift in Sources */,
+				F0A908D020AB29FD00D98B77 /* FocusSquare.swift in Sources */,
+				F0A908D220AB29FD00D98B77 /* HitTestVisualization.swift in Sources */,
+				F0A908D120AB29FD00D98B77 /* Gesture.swift in Sources */,
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
 				F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */,
+				F0A908D320AB29FD00D98B77 /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS5CMHAM9F;
 				INFOPLIST_FILE = HideNSeekUITests/Info.plist;
@@ -522,6 +574,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HideNSeek;
@@ -532,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LS5CMHAM9F;
 				INFOPLIST_FILE = HideNSeekUITests/Info.plist;
@@ -542,6 +596,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HideNSeek;
