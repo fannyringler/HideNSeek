@@ -79,16 +79,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
-    // MARK: - ARSCNViewDelegate
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
     func calculateDistance(from:SCNVector3,to:SCNVector3) -> Float{
         let x = from.x - to.x
         let y = from.y - to.y
@@ -119,6 +110,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
+                    if object == node {
+                        object = nil
+                        objectPosition = nil
+                    }
                     node.removeFromParentNode()
                     return
                 }
@@ -146,15 +141,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    hide = true
-                    hideButton.isHidden = false
-                    timer.invalidate()
-                    timerLabel.isHidden = true
-                    node.removeFromParentNode()
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
-                    self.present(viewController, animated: true, completion: nil)
-                    return
+                    if node == object {
+                        hide = true
+                        hideButton.isHidden = false
+                        timer.invalidate()
+                        timerLabel.isHidden = true
+                        node.removeFromParentNode()
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
+                        self.present(viewController, animated: true, completion: nil)
+                        return
+                    }
                 }
             }
         }
@@ -190,19 +187,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if hide{
-            objectPosition = SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z)
-            object = node
-        }
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
-                
+                self.objectPosition = SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z)
+                self.object = modelClone
             }
         }
+        
         
     }
     
