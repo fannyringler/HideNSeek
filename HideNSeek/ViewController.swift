@@ -20,6 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var objectPosition : SCNVector3!
     var object : SCNNode!
     var timer = Timer()
+    var sceneLight : SCNLight!
     
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
@@ -41,6 +42,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = false
         //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.antialiasingMode = .multisampling4X
         
@@ -49,6 +51,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        sceneLight = SCNLight()
+        sceneLight.type = .omni
+        
+        let lightNode = SCNNode()
+        lightNode.light = sceneLight
+        lightNode.position = SCNVector3(x:0 ,y:10 ,z:2)
+        
+        sceneView.scene.rootNode.addChildNode(lightNode)
         
         let modelScene = SCNScene(named:
             "art.scnassets/shiba/shiba.dae")!
@@ -62,7 +73,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-        
+        configuration.isLightEstimationEnabled = true
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -169,6 +180,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if let estimate = self.sceneView.session.currentFrame?.lightEstimate {
+            sceneLight.intensity = estimate.ambientIntensity
+        }
         if !hide {
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
@@ -184,6 +198,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
             }
         }
+       
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -197,8 +212,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 self.object = modelClone
             }
         }
-        
-        
+
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
@@ -231,6 +245,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         errorLabel.isHidden = false
         errorLabel.text = "Veuillez cacher un objet"
     }
+    
     
     func printTime() -> String {
         var minutes = "00"
