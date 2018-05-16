@@ -91,12 +91,23 @@
                                     <segue destination="BV1-FR-VrT" kind="show" id="oOt-Nf-VP2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAi-jh-DKu">
+                                <rect key="frame" x="16" y="617" width="50" height="30"/>
+                                <state key="normal" title="Accueil">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HuC-Zd-cPt" kind="show" id="jjx-60-1k7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PvJ-br-YiI" firstAttribute="centerX" secondItem="pxD-qG-aRn" secondAttribute="centerX" id="5vZ-kJ-aGX"/>
                             <constraint firstItem="PvJ-br-YiI" firstAttribute="top" secondItem="h2O-xw-ZYZ" secondAttribute="top" constant="247" id="6Bm-Zn-fJJ"/>
                             <constraint firstAttribute="bottom" secondItem="Zcx-X0-TiS" secondAttribute="bottom" constant="20" symbolic="YES" id="C87-J4-Zzg"/>
+                            <constraint firstItem="pAi-jh-DKu" firstAttribute="baseline" secondItem="Zcx-X0-TiS" secondAttribute="baseline" id="DMo-B5-ljB"/>
+                            <constraint firstItem="pAi-jh-DKu" firstAttribute="leading" secondItem="cMP-AY-2gf" secondAttribute="leadingMargin" id="byu-Vx-jqL"/>
                             <constraint firstItem="pxD-qG-aRn" firstAttribute="centerY" secondItem="cMP-AY-2gf" secondAttribute="centerY" id="pch-qq-Tg7"/>
                             <constraint firstItem="pxD-qG-aRn" firstAttribute="centerX" secondItem="cMP-AY-2gf" secondAttribute="centerX" id="qzZ-U9-eBA"/>
                             <constraint firstItem="Zcx-X0-TiS" firstAttribute="trailing" secondItem="cMP-AY-2gf" secondAttribute="trailingMargin" id="sy3-TA-OBd"/>
@@ -221,6 +232,7 @@
         <image name="HideNSeekHome" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jjx-60-1k7"/>
         <segue reference="oOt-Nf-VP2"/>
     </inferredMetricsTieBreakers>
 </document>
