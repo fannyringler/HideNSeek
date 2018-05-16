@@ -41,6 +41,16 @@
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <size key="shadowOffset" width="2" height="-1"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ3-hc-bbP">
+                                <rect key="frame" x="16" y="34" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="K3q-Vp-dpw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mg9-Xj-30h">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -75,6 +85,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oJ3-hc-bbP" firstAttribute="trailing" secondItem="4cY-2G-lau" secondAttribute="trailing" id="510-lG-Q6R"/>
                             <constraint firstItem="Mg9-Xj-30h" firstAttribute="top" secondItem="BrB-h1-WRS" secondAttribute="top" id="5mB-ee-U3L"/>
                             <constraint firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="Akg-Ub-FPQ"/>
                             <constraint firstItem="4cY-2G-lau" firstAttribute="trailing" secondItem="PDY-Vd-3AN" secondAttribute="trailing" id="D32-hR-J3O"/>
@@ -87,10 +98,13 @@
                             <constraint firstItem="Mg9-Xj-30h" firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="gEd-Ec-Uhe"/>
                             <constraint firstItem="Mg9-Xj-30h" firstAttribute="leading" secondItem="BrB-h1-WRS" secondAttribute="leading" id="nz8-V0-nF9"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="gwE-AE-Ae6" secondAttribute="bottom" id="qZw-EN-j8R"/>
+                            <constraint firstItem="oJ3-hc-bbP" firstAttribute="centerX" secondItem="Mg9-Xj-30h" secondAttribute="centerX" id="qsh-nw-jO2"/>
+                            <constraint firstItem="oJ3-hc-bbP" firstAttribute="top" secondItem="gwE-AE-Ae6" secondAttribute="top" constant="14" id="swz-f5-qnk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gwE-AE-Ae6"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="oJ3-hc-bbP" id="5UP-6P-pDD"/>
                         <outlet property="goButton" destination="RXx-VT-YWZ" id="eaa-fl-wuD"/>
                         <outlet property="hideButton" destination="PDY-Vd-3AN" id="h3q-yp-wkC"/>
                         <outlet property="readyView" destination="Mg9-Xj-30h" id="hVk-zs-3xw"/>
