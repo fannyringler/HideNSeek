@@ -26,9 +26,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.text = ""
+        errorLabel.isHidden = true
         hideButton.setTitle("Cache", for: .normal)
         timerLabel.isHidden = true
         readyView.isHidden = true
@@ -132,6 +135,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 // Use the resulting matrix to position the anchor
                 sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
                 // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
+                errorLabel.isHidden = true
             }
         }
         else{
@@ -203,16 +207,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        //if hide {
+        if object == nil {
+            zeroObject()
+        }
+        else {
             hide = false
             hideButton.isHidden = true
             readyView.isHidden = false
             goButton.isHidden = false
-        //}
-        /*else{
-            hide = true
-            timerLabel.isHidden = true
-        }*/
+        }
     }
     
     @objc func updateTimer(){
@@ -227,6 +230,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
         readyView.isHidden = true
         goButton.isHidden = true
+    }
+    
+    func zeroObject() {
+        errorLabel.isHidden = false
+        errorLabel.text = "Veuillez cacher un objet"
     }
     
     func printTime() -> String {
