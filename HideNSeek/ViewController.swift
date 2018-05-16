@@ -21,6 +21,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var object : SCNNode!
     var timer = Timer()
     
+    @IBOutlet weak var readyView: UIView!
+    @IBOutlet weak var goButton: UIButton!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
@@ -29,6 +31,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         hideButton.setTitle("Cache", for: .normal)
         timerLabel.isHidden = true
+        readyView.isHidden = true
+        goButton.isHidden = true
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -199,23 +203,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        if hide {
+        //if hide {
             hide = false
             hideButton.isHidden = true
-            timerLabel.isHidden = false
-            time = 0
-            timerLabel.text = printTime()
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
-        }
-        else{
+            readyView.isHidden = false
+            goButton.isHidden = false
+        //}
+        /*else{
             hide = true
             timerLabel.isHidden = true
-        }
+        }*/
     }
     
     @objc func updateTimer(){
         time += 1
         timerLabel.text = printTime()
+    }
+    
+    @IBAction func go(_ sender: Any) {
+        timerLabel.isHidden = false
+        time = 0
+        timerLabel.text = printTime()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+        readyView.isHidden = true
+        goButton.isHidden = true
     }
     
     func printTime() -> String {
