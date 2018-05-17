@@ -134,12 +134,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxD-qG-aRn">
-                                <rect key="frame" x="164" y="322" width="48" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bravo !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvJ-br-YiI">
                                 <rect key="frame" x="149" y="267" width="78" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -152,7 +146,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="oOt-Nf-VP2"/>
+                                    <segue destination="2zp-C5-Q9C" kind="show" id="TcQ-9k-YyT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAi-jh-DKu">
@@ -164,27 +158,37 @@
                                     <segue destination="HuC-Zd-cPt" kind="show" id="jjx-60-1k7"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-xH-CmS">
+                                <rect key="frame" x="51" y="324" width="274" height="224"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PvJ-br-YiI" firstAttribute="centerX" secondItem="pxD-qG-aRn" secondAttribute="centerX" id="5vZ-kJ-aGX"/>
+                            <constraint firstItem="bx6-xH-CmS" firstAttribute="leading" secondItem="h2O-xw-ZYZ" secondAttribute="leading" constant="51" id="3sh-1q-Gre"/>
                             <constraint firstItem="PvJ-br-YiI" firstAttribute="top" secondItem="h2O-xw-ZYZ" secondAttribute="top" constant="247" id="6Bm-Zn-fJJ"/>
+                            <constraint firstItem="Zcx-X0-TiS" firstAttribute="top" secondItem="bx6-xH-CmS" secondAttribute="bottom" constant="69" id="Bqx-xT-Il7"/>
                             <constraint firstAttribute="bottom" secondItem="Zcx-X0-TiS" secondAttribute="bottom" constant="20" symbolic="YES" id="C87-J4-Zzg"/>
                             <constraint firstItem="pAi-jh-DKu" firstAttribute="baseline" secondItem="Zcx-X0-TiS" secondAttribute="baseline" id="DMo-B5-ljB"/>
                             <constraint firstItem="pAi-jh-DKu" firstAttribute="leading" secondItem="cMP-AY-2gf" secondAttribute="leadingMargin" id="byu-Vx-jqL"/>
-                            <constraint firstItem="pxD-qG-aRn" firstAttribute="centerY" secondItem="cMP-AY-2gf" secondAttribute="centerY" id="pch-qq-Tg7"/>
-                            <constraint firstItem="pxD-qG-aRn" firstAttribute="centerX" secondItem="cMP-AY-2gf" secondAttribute="centerX" id="qzZ-U9-eBA"/>
+                            <constraint firstItem="bx6-xH-CmS" firstAttribute="top" secondItem="PvJ-br-YiI" secondAttribute="bottom" constant="25" id="gkH-Xg-sqx"/>
+                            <constraint firstItem="bx6-xH-CmS" firstAttribute="centerX" secondItem="PvJ-br-YiI" secondAttribute="centerX" id="hwb-ae-Xeb"/>
                             <constraint firstItem="Zcx-X0-TiS" firstAttribute="trailing" secondItem="cMP-AY-2gf" secondAttribute="trailingMargin" id="sy3-TA-OBd"/>
+                            <constraint firstItem="bx6-xH-CmS" firstAttribute="centerX" secondItem="cMP-AY-2gf" secondAttribute="centerX" id="z30-a7-HgQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h2O-xw-ZYZ"/>
                     </view>
                     <connections>
-                        <outlet property="label" destination="pxD-qG-aRn" id="6Zl-mS-h9I"/>
+                        <outlet property="label" destination="bx6-xH-CmS" id="wvK-EX-xJb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVE-NW-Imz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="118"/>
+            <point key="canvasLocation" x="788" y="117.39130434782609"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qyp-ve-tqW">
@@ -426,6 +430,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jjx-60-1k7"/>
-        <segue reference="3Op-Go-tEn"/>
+        <segue reference="TcQ-9k-YyT"/>
     </inferredMetricsTieBreakers>
 </document>
