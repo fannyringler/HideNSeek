@@ -10,11 +10,11 @@ import UIKit
 import SceneKit
 import ARKit
 
-var time = 0
 var players : [Multiplayer] = []
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    var time = 0
     var hide : Bool = true
     var nodeModel:SCNNode!
     let nodeName = "shiba"
