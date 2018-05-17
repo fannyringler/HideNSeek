@@ -11,6 +11,7 @@ import SceneKit
 import ARKit
 
 var time = 0
+var players : [Multiplayer] = []
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -21,9 +22,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var object : SCNNode!
     var timer = Timer()
     var sceneLight : SCNLight!
+    var playerNext = 0
     
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var readyPlayer: UILabel!
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
@@ -153,15 +156,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
                     if node == object {
-                        hide = true
-                        hideButton.isHidden = false
                         timer.invalidate()
-                        timerLabel.isHidden = true
-                        node.removeFromParentNode()
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
-                        self.present(viewController, animated: true, completion: nil)
+                        if playerNext == players.count {
+                            hide = true
+                            hideButton.isHidden = false
+                            
+                            timerLabel.isHidden = true
+                            node.removeFromParentNode()
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
+                            self.present(viewController, animated: true, completion: nil)
+                        }
+                        else {
+                            hideButton.isHidden = true
+                            readyView.isHidden = false
+                            goButton.isHidden = false
+                            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+                            if playerNext < players.count {
+                                playerNext += 1
+                            }
+                        }
                         return
+                            
                     }
                 }
             }
@@ -224,6 +240,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             hideButton.isHidden = true
             readyView.isHidden = false
             goButton.isHidden = false
+            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+            if playerNext < players.count {
+                playerNext += 1
+            }
         }
     }
     
