@@ -157,6 +157,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if let node = getParent(hit.node) {
                     if node == object {
                         timer.invalidate()
+                        players[playerNext - 1].score = time
                         if playerNext == players.count {
                             hide = true
                             hideButton.isHidden = false

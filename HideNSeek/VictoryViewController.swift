@@ -14,7 +14,11 @@ class VictoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "Vous avez touvé l'objet en \(time / 60) m \(time % 60) s"
+        label.text = ""
+        for player in players {
+            label.text?.append("\(player.name) \(player.score / 60) m \(player.score % 60) s ")
+        }
+        //label.text = "Vous avez touvé l'objet en \(time / 60) m \(time % 60) s"
         // Do any additional setup after loading the view.
     }
 
