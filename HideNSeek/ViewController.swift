@@ -18,11 +18,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var hide : Bool = true
     var nodeModel:SCNNode!
     let nodeName = "shiba"
-    var objectPosition : SCNVector3!
-    var object : SCNNode!
+    var objectPosition : [SCNVector3!] = []
+    var object : [SCNNode!] = []
     var timer = Timer()
     var sceneLight : SCNLight!
     var playerNext = 0
+    var objectToHide = objects
+    var test : SCNNode!
     
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
@@ -34,6 +36,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        objectToHide = objects
+        print("objet a cacher (didload) \(objectToHide)")
         errorLabel.text = ""
         errorLabel.isHidden = true
         hideButton.setTitle("Cache", for: .normal)
@@ -124,27 +128,34 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    if object == node {
-                        object = nil
-                        objectPosition = nil
+                    for i in 0...object.count  {
+                        if object[i] == node {
+                            object[i] = nil
+                            objectPosition[i] = nil
+                        }
                     }
                     node.removeFromParentNode()
+                    objectToHide += 1
                     return
                 }
             }
-            let hitResultsFeaturePoints: [ARHitTestResult] =
-                sceneView.hitTest(location, types: .featurePoint)
-            if let hit = hitResultsFeaturePoints.first {
-                // Get a transformation matrix with the euler angle of the camera
-                let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
-                
-                // Combine both transformation matrices
-                let finalTransform = simd_mul(hit.worldTransform, rotate)
-                
-                // Use the resulting matrix to position the anchor
-                sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
-                // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
-                errorLabel.isHidden = true
+            print("objet a cacher (touchesBegan) \(objectToHide)")
+            if objectToHide > 0 {
+                let hitResultsFeaturePoints: [ARHitTestResult] =
+                    sceneView.hitTest(location, types: .featurePoint)
+                if let hit = hitResultsFeaturePoints.first {
+                    // Get a transformation matrix with the euler angle of the camera
+                    let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+                    
+                    // Combine both transformation matrices
+                    let finalTransform = simd_mul(hit.worldTransform, rotate)
+                    
+                    // Use the resulting matrix to position the anchor
+                    sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
+                    // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
+                    errorLabel.isHidden = true
+                }
+                objectToHide -= 1
             }
         }
         else{
@@ -155,30 +166,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    if node == object {
-                        timer.invalidate()
-                        players[playerNext - 1].score = time
-                        if playerNext == players.count {
-                            hide = true
-                            hideButton.isHidden = false
-                            
-                            timerLabel.isHidden = true
-                            node.removeFromParentNode()
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
-                            self.present(viewController, animated: true, completion: nil)
-                        }
-                        else {
-                            hideButton.isHidden = true
-                            readyView.isHidden = false
-                            goButton.isHidden = false
-                            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
-                            if playerNext < players.count {
-                                playerNext += 1
+                    for i in 0...object.count {
+                        if node == object[i] {
+                            timer.invalidate()
+                            players[playerNext - 1].score = time
+                            if playerNext == players.count {
+                                hide = true
+                                hideButton.isHidden = false
+                                
+                                timerLabel.isHidden = true
+                                node.removeFromParentNode()
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
+                                self.present(viewController, animated: true, completion: nil)
                             }
-                        }
-                        return
+                            else {
+                                node.isHidden = true
+                                hideButton.isHidden = true
+                                readyView.isHidden = false
+                                goButton.isHidden = false
+                                readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+                                if playerNext < players.count {
+                                    playerNext += 1
+                                }
+                            }
+                            return
                             
+                        }
                     }
                 }
             }
@@ -206,12 +220,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let orientation = SCNVector3(-transform.m31, -transform.m32, transform.m33)
             let location = SCNVector3(transform.m41, transform.m42, transform.m43)
             let currentPositionOfCamera = SCNVector3(orientation.x + location.x, orientation.y + location.y, orientation.z + location.z)
-            if objectPosition != nil {
-                let distance = calculateDistance(from: objectPosition, to: currentPositionOfCamera)
-                if distance < 1{
-                    object.isHidden = false
-                }else{
-                    object.isHidden = true
+            for i in 0...object.count {
+                if objectPosition[i] != nil {
+                    let distance = calculateDistance(from: objectPosition[i], to: currentPositionOfCamera)
+                    if distance < 1{
+                        object[i].isHidden = false
+                    }else{
+                        object[i].isHidden = true
+                    }
                 }
             }
         }
@@ -225,25 +241,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
-                self.objectPosition = SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z)
-                self.object = modelClone
+                self.objectPosition.append(SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z))
+                self.object.append(modelClone)
             }
         }
 
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        if object == nil {
-            zeroObject()
-        }
-        else {
-            hide = false
-            hideButton.isHidden = true
-            readyView.isHidden = false
-            goButton.isHidden = false
-            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
-            if playerNext < players.count {
-                playerNext += 1
+        for i in 0...object.count{
+            if object[i] == nil {
+                zeroObject()
+            }
+            else {
+                hide = false
+                hideButton.isHidden = true
+                readyView.isHidden = false
+                goButton.isHidden = false
+                readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+                if playerNext < players.count {
+                    playerNext += 1
+                }
             }
         }
     }
@@ -260,6 +278,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
         readyView.isHidden = true
         goButton.isHidden = true
+        for obj in object {
+            obj?.isHidden = false
+        }
     }
     
     func zeroObject() {
