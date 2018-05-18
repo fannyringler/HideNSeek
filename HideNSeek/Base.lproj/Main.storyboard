@@ -413,6 +413,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4UT-0v-xmO"/>
                     </view>
+                    <connections>
+                        <outlet property="choiceObject" destination="Nu4-aa-Qph" id="GWg-g3-UkZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3l-Dv-YrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

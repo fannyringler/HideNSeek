@@ -128,7 +128,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    for i in 0...object.count  {
+                    for i in 0...object.count - 1  {
                         if object[i] == node {
                             object[i] = nil
                             objectPosition[i] = nil
@@ -166,7 +166,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    for i in 0...object.count {
+                    for i in 0...object.count - 1{
                         if node == object[i] {
                             timer.invalidate()
                             players[playerNext - 1].score = time
@@ -220,7 +220,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let orientation = SCNVector3(-transform.m31, -transform.m32, transform.m33)
             let location = SCNVector3(transform.m41, transform.m42, transform.m43)
             let currentPositionOfCamera = SCNVector3(orientation.x + location.x, orientation.y + location.y, orientation.z + location.z)
-            for i in 0...object.count {
+            for i in 0...object.count - 1 {
                 if objectPosition[i] != nil {
                     let distance = calculateDistance(from: objectPosition[i], to: currentPositionOfCamera)
                     if distance < 1{
@@ -249,7 +249,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        for i in 0...object.count{
+        for i in 0...object.count - 1{
             if object[i] == nil {
                 zeroObject()
             }
