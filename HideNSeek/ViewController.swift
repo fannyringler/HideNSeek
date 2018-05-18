@@ -75,14 +75,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         camera.maximumExposure = 3
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        // Prevent the screen from being dimmed to avoid interuppting the AR experience.
+        UIApplication.shared.isIdleTimerDisabled = true
         
-        // Run the view's session
-        sceneView.session.run(configuration)
+        // Start the `ARSession`.
+        resetTracking()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -252,5 +252,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.pointOfView?.addChildNode(self.focusSquare)
             }
         }
+    }
+    
+    func resetTracking() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
 }
