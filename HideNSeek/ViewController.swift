@@ -130,7 +130,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hide {
-            let location = touches.first!.location(in: sceneView)
+            let location = screenCenter
             var hitTestOptions = [SCNHitTestOption: Any]()
             hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
             let hitResults: [SCNHitTestResult]  =
@@ -216,7 +216,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
-                
             }
         }
         
