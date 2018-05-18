@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F010481F20AC431300619DA2 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010481D20AC431300619DA2 /* FocusSquare.swift */; };
+		F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010481E20AC431300619DA2 /* FocusSquareSegment.swift */; };
+		F010482320AC4A4600619DA2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010482220AC4A4600619DA2 /* Utilities.swift */; };
+		F05BC70E20AD66ED003AB662 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */; };
 		F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */; };
 		F08411EC20A97EAF00BB9ED6 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F08411EB20A97EAF00BB9ED6 /* art.scnassets */; };
 		F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08411ED20A97EAF00BB9ED6 /* ViewController.swift */; };
@@ -15,12 +19,6 @@
 		F08411F620A97EB000BB9ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */; };
 		F084120120A97EB000BB9ED6 /* HideNSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120020A97EB000BB9ED6 /* HideNSeekTests.swift */; };
 		F084120C20A97EB000BB9ED6 /* HideNSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */; };
-		F0A908C920AB29AB00D98B77 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908C820AB29AB00D98B77 /* Utilities.swift */; };
-		F0A908D020AB29FD00D98B77 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */; };
-		F0A908D120AB29FD00D98B77 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CC20AB29FD00D98B77 /* Gesture.swift */; };
-		F0A908D220AB29FD00D98B77 /* HitTestVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */; };
-		F0A908D320AB29FD00D98B77 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CE20AB29FD00D98B77 /* Plane.swift */; };
-		F0A908D420AB29FD00D98B77 /* PlaneDebugVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F010481D20AC431300619DA2 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		F010481E20AC431300619DA2 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		F010482220AC4A4600619DA2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VirtualObjectARView.swift; path = ../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/VirtualObjectARView.swift; sourceTree = "<group>"; };
 		F08411E620A97EAF00BB9ED6 /* HideNSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideNSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F08411EB20A97EAF00BB9ED6 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -55,17 +57,6 @@
 		F084120720A97EB000BB9ED6 /* HideNSeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HideNSeekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNSeekUITests.swift; sourceTree = "<group>"; };
 		F084120D20A97EB000BB9ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0A908C320AB297200D98B77 /* Candle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candle.swift; sourceTree = "<group>"; };
-		F0A908C420AB297200D98B77 /* Chair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chair.swift; sourceTree = "<group>"; };
-		F0A908C520AB297200D98B77 /* Cup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cup.swift; sourceTree = "<group>"; };
-		F0A908C620AB297200D98B77 /* Lamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lamp.swift; sourceTree = "<group>"; };
-		F0A908C720AB297200D98B77 /* Vase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vase.swift; sourceTree = "<group>"; };
-		F0A908C820AB29AB00D98B77 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = "../../../Downloads/ARKit-Example-by-Apple-master/ARKitExample/Utilities.swift"; sourceTree = "<group>"; };
-		F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
-		F0A908CC20AB29FD00D98B77 /* Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
-		F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitTestVisualization.swift; sourceTree = "<group>"; };
-		F0A908CE20AB29FD00D98B77 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
-		F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaneDebugVisualization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +84,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F010481C20AC431300619DA2 /* Focus Square */ = {
+			isa = PBXGroup;
+			children = (
+				F010481D20AC431300619DA2 /* FocusSquare.swift */,
+				F010481E20AC431300619DA2 /* FocusSquareSegment.swift */,
+			);
+			name = "Focus Square";
+			path = "../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/Focus Square";
+			sourceTree = "<group>";
+		};
+		F010482120AC4A4600619DA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F010482220AC4A4600619DA2 /* Utilities.swift */,
+			);
+			name = Utilities;
+			path = ../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/Utilities;
+			sourceTree = "<group>";
+		};
 		F08411DD20A97EAF00BB9ED6 = {
 			isa = PBXGroup;
 			children = (
@@ -117,14 +127,14 @@
 			isa = PBXGroup;
 			children = (
 				F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */,
-				F0A908C820AB29AB00D98B77 /* Utilities.swift */,
-				F0A908C220AB297200D98B77 /* Virtual Objects */,
 				F08411EB20A97EAF00BB9ED6 /* art.scnassets */,
 				F08411ED20A97EAF00BB9ED6 /* ViewController.swift */,
-				F0A908CA20AB29FD00D98B77 /* UI Elements */,
 				F08411EF20A97EAF00BB9ED6 /* Main.storyboard */,
 				F08411F220A97EB000BB9ED6 /* Assets.xcassets */,
+				F010482120AC4A4600619DA2 /* Utilities */,
 				F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */,
+				F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */,
+				F010481C20AC431300619DA2 /* Focus Square */,
 				F08411F720A97EB000BB9ED6 /* Info.plist */,
 			);
 			path = HideNSeek;
@@ -146,31 +156,6 @@
 				F084120D20A97EB000BB9ED6 /* Info.plist */,
 			);
 			path = HideNSeekUITests;
-			sourceTree = "<group>";
-		};
-		F0A908C220AB297200D98B77 /* Virtual Objects */ = {
-			isa = PBXGroup;
-			children = (
-				F0A908C320AB297200D98B77 /* Candle.swift */,
-				F0A908C420AB297200D98B77 /* Chair.swift */,
-				F0A908C520AB297200D98B77 /* Cup.swift */,
-				F0A908C620AB297200D98B77 /* Lamp.swift */,
-				F0A908C720AB297200D98B77 /* Vase.swift */,
-			);
-			path = "Virtual Objects";
-			sourceTree = "<group>";
-		};
-		F0A908CA20AB29FD00D98B77 /* UI Elements */ = {
-			isa = PBXGroup;
-			children = (
-				F0A908CB20AB29FD00D98B77 /* FocusSquare.swift */,
-				F0A908CC20AB29FD00D98B77 /* Gesture.swift */,
-				F0A908CD20AB29FD00D98B77 /* HitTestVisualization.swift */,
-				F0A908CE20AB29FD00D98B77 /* Plane.swift */,
-				F0A908CF20AB29FD00D98B77 /* PlaneDebugVisualization.swift */,
-			);
-			name = "UI Elements";
-			path = "../../../Downloads/ARKit-Example-by-Apple-master/ARKitExample/UI Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,14 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0A908C920AB29AB00D98B77 /* Utilities.swift in Sources */,
-				F0A908D420AB29FD00D98B77 /* PlaneDebugVisualization.swift in Sources */,
-				F0A908D020AB29FD00D98B77 /* FocusSquare.swift in Sources */,
-				F0A908D220AB29FD00D98B77 /* HitTestVisualization.swift in Sources */,
-				F0A908D120AB29FD00D98B77 /* Gesture.swift in Sources */,
+				F05BC70E20AD66ED003AB662 /* VirtualObjectARView.swift in Sources */,
+				F010482320AC4A4600619DA2 /* Utilities.swift in Sources */,
+				F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */,
+				F010481F20AC431300619DA2 /* FocusSquare.swift in Sources */,
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
 				F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */,
-				F0A908D320AB29FD00D98B77 /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +555,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = ensusa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -594,7 +577,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = ensusa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
