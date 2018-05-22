@@ -51,15 +51,27 @@
                                     <action selector="onBack:" destination="bgy-aT-mr7" eventType="touchUpInside" id="dQ0-L2-XkR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA1-if-ES3">
+                                <rect key="frame" x="157.5" y="613" width="59" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Accueil">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HuC-Zd-cPt" kind="show" id="MwL-vp-YLG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.60911871668470385" blue="0.60026785554531881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hA1-if-ES3" firstAttribute="bottom" secondItem="iWp-Lm-bRB" secondAttribute="bottom" id="9ug-7V-fr6"/>
                             <constraint firstItem="uJb-bK-TJo" firstAttribute="top" secondItem="LDJ-6H-ll6" secondAttribute="top" constant="132" id="CdY-gx-vLn"/>
                             <constraint firstItem="uJb-bK-TJo" firstAttribute="centerY" secondItem="cZd-f6-uHj" secondAttribute="centerY" id="PeV-uo-0JA"/>
                             <constraint firstItem="iWp-Lm-bRB" firstAttribute="leading" secondItem="ayu-bd-nPZ" secondAttribute="leading" id="PgG-Ww-Bpb"/>
                             <constraint firstItem="uJb-bK-TJo" firstAttribute="centerX" secondItem="ayu-bd-nPZ" secondAttribute="centerX" id="RTX-M3-2bY"/>
                             <constraint firstItem="9KW-f6-iOZ" firstAttribute="top" secondItem="ayu-bd-nPZ" secondAttribute="bottom" constant="25" id="TS3-Jd-4b3"/>
                             <constraint firstAttribute="bottom" secondItem="9KW-f6-iOZ" secondAttribute="bottom" constant="20" symbolic="YES" id="bd7-x3-Dkq"/>
+                            <constraint firstItem="hA1-if-ES3" firstAttribute="centerX" secondItem="ayu-bd-nPZ" secondAttribute="centerX" id="dLi-1g-sI9"/>
                             <constraint firstItem="uJb-bK-TJo" firstAttribute="leading" secondItem="LDJ-6H-ll6" secondAttribute="leading" constant="65" id="gRe-8O-WRv"/>
                             <constraint firstItem="iWp-Lm-bRB" firstAttribute="baseline" secondItem="9KW-f6-iOZ" secondAttribute="baseline" id="it5-eg-w9u"/>
                             <constraint firstItem="uJb-bK-TJo" firstAttribute="centerX" secondItem="cZd-f6-uHj" secondAttribute="centerX" id="p4F-xc-dUF"/>
@@ -568,7 +580,7 @@
         <image name="HideNSeekHome" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jjx-60-1k7"/>
+        <segue reference="MwL-vp-YLG"/>
         <segue reference="WTF-am-erl"/>
     </inferredMetricsTieBreakers>
 </document>
