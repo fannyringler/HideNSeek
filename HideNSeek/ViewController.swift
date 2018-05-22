@@ -12,14 +12,15 @@ import ARKit
 
 var players : [Multiplayer] = []
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var time = 0
     var hide : Bool = true
     var nodeModel:SCNNode!
-    let nodeName = "shiba"
+    var nodeName = "candle"
     var objectPosition : [SCNVector3!] = []
     var object : [SCNNode!] = []
+    let objectNames = ["candle", "chair", "cup", "lamp", "painting", "shiba", "stickyNote", "vase"]
     var objectFind : [Bool] = []
     var timer = Timer()
     var sceneLight : SCNLight!
@@ -27,6 +28,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var objectToHide = objects
     var objectToFind = objects
     var test : SCNNode!
+    var modelScene = SCNScene()
+    var virtualObject : [VirtualObject!] = []
+    
     
     var focusSquare = FocusSquare()
     
@@ -41,6 +45,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
 
+    @IBOutlet weak var objectAvailable: UIPickerView!
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var readyPlayer: UILabel!
@@ -85,12 +90,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         lightNode.position = SCNVector3(x:0 ,y:10 ,z:2)
         
         sceneView.scene.rootNode.addChildNode(lightNode)
-        
-        let modelScene = SCNScene(named:
-            "art.scnassets/shiba/shiba.dae")!
-        
-        nodeModel =  modelScene.rootNode.childNode(
-            withName: nodeName, recursively: true)
+       
     }
     
     func setupCamera() {
@@ -289,7 +289,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
-                print(modelClone.scale)
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
@@ -470,5 +469,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         default:
             return nil
         }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return objectNames.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        let text = objectNames[row]
+        
+        let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedStringKey.foregroundColor:UIColor.red])
+        return attribute
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.nodeName = objectNames[row]
+        if nodeName == "shiba"{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/shiba/shiba.dae")!
+        }else{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/\(nodeName)/\(nodeName).scn")!
+        }
+        
+        nodeModel =  modelScene.rootNode.childNode(
+            withName: nodeName, recursively: true)
     }
 }
