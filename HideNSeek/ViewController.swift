@@ -175,7 +175,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
             if objectToHide > 0 {
                 let hitResultsFeaturePoints: [ARHitTestResult] =
-                    sceneView.hitTest(location, types: .featurePoint)
+                    sceneView.hitTest(screenCenter, types: .featurePoint)
                 if let hit = hitResultsFeaturePoints.first {
                     // Get a transformation matrix with the euler angle of the camera
                     let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
