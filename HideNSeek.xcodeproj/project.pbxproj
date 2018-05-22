@@ -11,6 +11,7 @@
 		F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010481E20AC431300619DA2 /* FocusSquareSegment.swift */; };
 		F010482320AC4A4600619DA2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010482220AC4A4600619DA2 /* Utilities.swift */; };
 		F05BC70E20AD66ED003AB662 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */; };
+		F064B73620AC0EA000DB1BDF /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */; };
 		F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */; };
 		F08411EC20A97EAF00BB9ED6 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F08411EB20A97EAF00BB9ED6 /* art.scnassets */; };
 		F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08411ED20A97EAF00BB9ED6 /* ViewController.swift */; };
@@ -19,6 +20,8 @@
 		F08411F620A97EB000BB9ED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */; };
 		F084120120A97EB000BB9ED6 /* HideNSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120020A97EB000BB9ED6 /* HideNSeekTests.swift */; };
 		F084120C20A97EB000BB9ED6 /* HideNSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */; };
+		F0F6B85320AD53F0009C0C5B /* Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6B85220AD53F0009C0C5B /* Multiplayer.swift */; };
+		F0F6B85520AD54C5009C0C5B /* MultiplayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F6B85420AD54C5009C0C5B /* MultiplayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,7 @@
 		F010481E20AC431300619DA2 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
 		F010482220AC4A4600619DA2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VirtualObjectARView.swift; path = ../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/VirtualObjectARView.swift; sourceTree = "<group>"; };
+		F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
 		F08411E620A97EAF00BB9ED6 /* HideNSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideNSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F08411EB20A97EAF00BB9ED6 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		F084120720A97EB000BB9ED6 /* HideNSeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HideNSeekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F084120B20A97EB000BB9ED6 /* HideNSeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNSeekUITests.swift; sourceTree = "<group>"; };
 		F084120D20A97EB000BB9ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0F6B85220AD53F0009C0C5B /* Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multiplayer.swift; sourceTree = "<group>"; };
+		F0F6B85420AD54C5009C0C5B /* MultiplayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,9 @@
 				F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */,
 				F010481C20AC431300619DA2 /* Focus Square */,
 				F08411F720A97EB000BB9ED6 /* Info.plist */,
+				F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */,
+				F0F6B85220AD53F0009C0C5B /* Multiplayer.swift */,
+				F0F6B85420AD54C5009C0C5B /* MultiplayerViewController.swift */,
 			);
 			path = HideNSeek;
 			sourceTree = "<group>";
@@ -294,7 +303,10 @@
 				F010482320AC4A4600619DA2 /* Utilities.swift in Sources */,
 				F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */,
 				F010481F20AC431300619DA2 /* FocusSquare.swift in Sources */,
+				F0F6B85320AD53F0009C0C5B /* Multiplayer.swift in Sources */,
+				F0F6B85520AD54C5009C0C5B /* MultiplayerViewController.swift in Sources */,
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
+				F064B73620AC0EA000DB1BDF /* VictoryViewController.swift in Sources */,
 				F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

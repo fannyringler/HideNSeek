@@ -10,13 +10,19 @@ import UIKit
 import SceneKit
 import ARKit
 
+var players : [Multiplayer] = []
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
+    var time = 0
     var hide : Bool = true
     var nodeModel:SCNNode!
     let nodeName = "shiba"
     var objectPosition : SCNVector3!
     var object : SCNNode!
+    var timer = Timer()
+    var sceneLight : SCNLight!
+    var playerNext = 0
     
     var focusSquare = FocusSquare()
     
@@ -30,11 +36,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBOutlet var sceneView: VirtualObjectARView!
+
+    @IBOutlet weak var readyView: UIView!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var readyPlayer: UILabel!
     @IBOutlet weak var hideButton: UIButton!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.text = ""
+        errorLabel.isHidden = true
         hideButton.setTitle("Cache", for: .normal)
+        timerLabel.isHidden = true
+        readyView.isHidden = true
+        goButton.isHidden = true
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -44,6 +61,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.autoenablesDefaultLighting = false
         //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.antialiasingMode = .multisampling4X
         
@@ -52,6 +70,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        sceneLight = SCNLight()
+        sceneLight.type = .omni
+        
+        let lightNode = SCNNode()
+        lightNode.light = sceneLight
+        lightNode.position = SCNVector3(x:0 ,y:10 ,z:2)
+        
+        sceneView.scene.rootNode.addChildNode(lightNode)
         
         let modelScene = SCNScene(named:
             "art.scnassets/shiba/shiba.dae")!
@@ -83,6 +110,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Start the `ARSession`.
         resetTracking()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,16 +125,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
     
-    // MARK: - ARSCNViewDelegate
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
     func calculateDistance(from:SCNVector3,to:SCNVector3) -> Float{
         let x = from.x - to.x
         let y = from.y - to.y
@@ -137,6 +156,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
+                    if object == node {
+                        object = nil
+                        objectPosition = nil
+                    }
                     node.removeFromParentNode()
                     return
                 }
@@ -153,6 +176,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 // Use the resulting matrix to position the anchor
                 sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
                 // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
+                errorLabel.isHidden = true
             }
         }
         else{
@@ -163,10 +187,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    hide = true
-                    hideButton.isHidden = false
-                    node.removeFromParentNode()
-                    return
+                    if node == object {
+                        timer.invalidate()
+                        players[playerNext - 1].score = time
+                        if playerNext == players.count {
+                            hide = true
+                            hideButton.isHidden = false
+                            
+                            timerLabel.isHidden = true
+                            node.removeFromParentNode()
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
+                            self.present(viewController, animated: true, completion: nil)
+                        }
+                        else {
+                            hideButton.isHidden = true
+                            readyView.isHidden = false
+                            goButton.isHidden = false
+                            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+                            if playerNext < players.count {
+                                playerNext += 1
+                            }
+                        }
+                        return
+                            
+                    }
                 }
             }
         }
@@ -184,8 +229,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+
         DispatchQueue.main.async {
             self.updateFocusSquare()
+        }
+        if let estimate = self.sceneView.session.currentFrame?.lightEstimate {
+            sceneLight.intensity = estimate.ambientIntensity
         }
         if !hide {
             guard let pointOfView = sceneView.pointOfView else { return }
@@ -205,11 +254,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        
-        if hide{
-            objectPosition = SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z)
-            object = node
-        }
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
@@ -217,19 +261,66 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
+                self.objectPosition = SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z)
+                self.object = modelClone
             }
         }
-        
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        if hide {
+        if object == nil {
+            zeroObject()
+        }
+        else {
             hide = false
             hideButton.isHidden = true
+            readyView.isHidden = false
+            goButton.isHidden = false
+            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+            if playerNext < players.count {
+                playerNext += 1
+            }
         }
-        else{
-            hide = true
+    }
+    
+    @objc func updateTimer(){
+        time += 1
+        timerLabel.text = printTime()
+    }
+    
+    @IBAction func go(_ sender: Any) {
+        timerLabel.isHidden = false
+        time = 0
+        timerLabel.text = printTime()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
+        readyView.isHidden = true
+        goButton.isHidden = true
+    }
+    
+    func zeroObject() {
+        errorLabel.isHidden = false
+        errorLabel.text = "Veuillez cacher un objet"
+    }
+    
+    
+    func printTime() -> String {
+        var minutes = "00"
+        var seconds = "\(time)"
+        if time >= 60 {
+            if time / 60 < 10 {
+                minutes = "0\(time / 60)"
+            }
+            else {
+                minutes = "\(time / 60)"
+            }
         }
+        if time % 60 < 10{
+            seconds = "0\(time % 60)"
+        }
+        else {
+            seconds = "\(time % 60)"
+        }
+        return minutes + ":" + seconds
     }
     
     
@@ -257,6 +348,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func resetTracking() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
+        configuration.isLightEstimationEnabled = true
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
 }
