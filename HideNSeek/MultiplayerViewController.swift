@@ -11,7 +11,8 @@ import UIKit
 class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let player = ["1","2","3","4"]
-    var rows = 0
+
+    var rows = 1
     
     @IBOutlet weak var choiceBox: UIPickerView!
     @IBOutlet weak var joueur1Label: UILabel!
@@ -25,7 +26,9 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var play: UIButton!
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        var text = player[row]
+
+        let text = player[row]
+
         let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
         return attribute
     }
@@ -70,15 +73,12 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        joueur1Label.isHidden = true
-        joueur1Name.isHidden = true
         joueur2Label.isHidden = true
         joueur2Name.isHidden = true
         joueur3Label.isHidden = true
         joueur3Name.isHidden = true
         joueur4Label.isHidden = true
         joueur4Name.isHidden = true
-        play.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,8 +106,9 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             else {
                 player2.name = "Joueur2"
             }
-                players.append(player2)
-            }
+
+            players.append(player2)
+        }
         if rows >= 3 {
             let player3 = Multiplayer()
             if joueur3Name.text != "" {
@@ -129,6 +130,4 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             players.append(player4)
         }
     }
-    
-
 }
