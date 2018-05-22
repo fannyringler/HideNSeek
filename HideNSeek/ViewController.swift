@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var readySentence: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -274,6 +275,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             readyView.isHidden = false
             goButton.isHidden = false
             readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+            if objects > 1 {
+                readySentence.text = "Etes-vous prêt à chercher \(objects) objets ?"
+            } else {
+                readySentence.text = "Etes-vous prêt à chercher l'objet ?"
+            }
             if playerNext < players.count {
                 playerNext += 1
             }

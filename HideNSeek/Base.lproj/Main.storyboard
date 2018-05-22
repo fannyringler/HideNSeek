@@ -117,6 +117,7 @@
                         <outlet property="goButton" destination="RXx-VT-YWZ" id="eaa-fl-wuD"/>
                         <outlet property="hideButton" destination="PDY-Vd-3AN" id="h3q-yp-wkC"/>
                         <outlet property="readyPlayer" destination="mJX-Ym-INV" id="vjc-No-naj"/>
+                        <outlet property="readySentence" destination="bBB-xY-hZ8" id="JdA-Ie-UIU"/>
                         <outlet property="readyView" destination="Mg9-Xj-30h" id="hVk-zs-3xw"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                         <outlet property="timerLabel" destination="4cY-2G-lau" id="M6x-dO-jrw"/>

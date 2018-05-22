@@ -70,15 +70,12 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        joueur1Label.isHidden = true
-        joueur1Name.isHidden = true
         joueur2Label.isHidden = true
         joueur2Name.isHidden = true
         joueur3Label.isHidden = true
         joueur3Name.isHidden = true
         joueur4Label.isHidden = true
         joueur4Name.isHidden = true
-        play.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
