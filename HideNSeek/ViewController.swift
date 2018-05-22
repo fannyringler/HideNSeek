@@ -130,7 +130,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if hide {
-            let location = screenCenter
+            let location = touches.first!.location(in: sceneView)
             var hitTestOptions = [SCNHitTestOption: Any]()
             hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
             let hitResults: [SCNHitTestResult]  =
@@ -142,7 +142,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
             }
             let hitResultsFeaturePoints: [ARHitTestResult] =
-                sceneView.hitTest(location, types: .featurePoint)
+                sceneView.hitTest(screenCenter, types: .featurePoint)
             if let hit = hitResultsFeaturePoints.first {
                 // Get a transformation matrix with the euler angle of the camera
                 let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
@@ -213,6 +213,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
+                print(modelClone.scale)
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
