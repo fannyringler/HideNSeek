@@ -35,7 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
-    @IBOutlet var sceneView: VirtualObjectARView!
+    @IBOutlet var sceneView: ARSCNView!
 
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
@@ -230,13 +230,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
-        DispatchQueue.main.async {
-            self.updateFocusSquare()
-        }
+        
         if let estimate = self.sceneView.session.currentFrame?.lightEstimate {
             sceneLight.intensity = estimate.ambientIntensity
         }
         if !hide {
+            self.focusSquare.hide()
             guard let pointOfView = sceneView.pointOfView else { return }
             let transform = pointOfView.transform
             let orientation = SCNVector3(-transform.m31, -transform.m32, transform.m33)
@@ -249,6 +248,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }else{
                     object.isHidden = true
                 }
+            }
+        }else{
+            DispatchQueue.main.async {
+                self.updateFocusSquare()
             }
         }
     }
@@ -327,13 +330,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func updateFocusSquare() {
         
         
-        focusSquare.unhide()
-            
-        
+
         // Perform hit testing only when ARKit tracking is in a good state.
         if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
-            let result = self.sceneView.smartHitTest(screenCenter) {
+            let result = self.smartHitTest(screenCenter) {
             DispatchQueue.main.async {
+                self.focusSquare.unhide()
                 self.sceneView.scene.rootNode.addChildNode(self.focusSquare)
                 self.focusSquare.state = .detecting(hitTestResult: result, camera: camera)
             }
@@ -341,6 +343,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             DispatchQueue.main.async {
                 self.focusSquare.state = .initializing
                 self.sceneView.pointOfView?.addChildNode(self.focusSquare)
+                self.focusSquare.hide()
             }
         }
     }
@@ -350,5 +353,70 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         configuration.planeDetection = [.horizontal, .vertical]
         configuration.isLightEstimationEnabled = true
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    // MARK: Position Testing
+    func smartHitTest(_ point: CGPoint,
+                      infinitePlane: Bool = false,
+                      objectPosition: float3? = nil,
+                      allowedAlignments: [ARPlaneAnchor.Alignment] = [.horizontal, .vertical]) -> ARHitTestResult? {
+        
+        // Perform the hit test.
+        let results = sceneView.hitTest(point, types: [.existingPlaneUsingGeometry, .estimatedVerticalPlane, .estimatedHorizontalPlane])
+        
+        // 1. Check for a result on an existing plane using geometry.
+        if let existingPlaneUsingGeometryResult = results.first(where: { $0.type == .existingPlaneUsingGeometry }),
+            let planeAnchor = existingPlaneUsingGeometryResult.anchor as? ARPlaneAnchor, allowedAlignments.contains(planeAnchor.alignment) {
+            return existingPlaneUsingGeometryResult
+        }
+        
+        if infinitePlane {
+            
+            // 2. Check for a result on an existing plane, assuming its dimensions are infinite.
+            //    Loop through all hits against infinite existing planes and either return the
+            //    nearest one (vertical planes) or return the nearest one which is within 5 cm
+            //    of the object's position.
+            let infinitePlaneResults = sceneView.hitTest(point, types: .existingPlane)
+            
+            for infinitePlaneResult in infinitePlaneResults {
+                if let planeAnchor = infinitePlaneResult.anchor as? ARPlaneAnchor, allowedAlignments.contains(planeAnchor.alignment) {
+                    if planeAnchor.alignment == .vertical {
+                        // Return the first vertical plane hit test result.
+                        return infinitePlaneResult
+                    } else {
+                        // For horizontal planes we only want to return a hit test result
+                        // if it is close to the current object's position.
+                        if let objectY = objectPosition?.y {
+                            let planeY = infinitePlaneResult.worldTransform.translation.y
+                            if objectY > planeY - 0.05 && objectY < planeY + 0.05 {
+                                return infinitePlaneResult
+                            }
+                        } else {
+                            return infinitePlaneResult
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 3. As a final fallback, check for a result on estimated planes.
+        let vResult = results.first(where: { $0.type == .estimatedVerticalPlane })
+        let hResult = results.first(where: { $0.type == .estimatedHorizontalPlane })
+        switch (allowedAlignments.contains(.horizontal), allowedAlignments.contains(.vertical)) {
+        case (true, false):
+            return hResult
+        case (false, true):
+            // Allow fallback to horizontal because we assume that objects meant for vertical placement
+            // (like a picture) can always be placed on a horizontal surface, too.
+            return vResult ?? hResult
+        case (true, true):
+            if hResult != nil && vResult != nil {
+                return hResult!.distance < vResult!.distance ? hResult! : vResult!
+            } else {
+                return hResult ?? vResult
+            }
+        default:
+            return nil
+        }
     }
 }
