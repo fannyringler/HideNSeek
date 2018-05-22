@@ -25,7 +25,7 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var play: UIButton!
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        var text = player[row]
+        let text = player[row]
         let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
         return attribute
     }
@@ -106,8 +106,8 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             else {
                 player2.name = "Joueur2"
             }
-                players.append(player2)
-            }
+            players.append(player2)
+        }
         if rows >= 3 {
             let player3 = Multiplayer()
             if joueur3Name.text != "" {

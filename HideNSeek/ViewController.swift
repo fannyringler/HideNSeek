@@ -24,6 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var sceneLight : SCNLight!
     var playerNext = 0
     var objectToHide = objects
+    var objectToFind = objects
     var test : SCNNode!
     
     @IBOutlet weak var readyView: UIView!
@@ -37,7 +38,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         objectToHide = objects
-        print("objet a cacher (didload) \(objectToHide)")
         errorLabel.text = ""
         errorLabel.isHidden = true
         hideButton.setTitle("Cache", for: .normal)
@@ -130,8 +130,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if let node = getParent(hit.node) {
                     for i in 0...object.count - 1  {
                         if object[i] == node {
-                            object[i] = nil
-                            objectPosition[i] = nil
+                            object.remove(at: i)
+                            objectPosition.remove(at: i)
                         }
                     }
                     node.removeFromParentNode()
@@ -139,7 +139,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     return
                 }
             }
-            print("objet a cacher (touchesBegan) \(objectToHide)")
             if objectToHide > 0 {
                 let hitResultsFeaturePoints: [ARHitTestResult] =
                     sceneView.hitTest(location, types: .featurePoint)
@@ -154,8 +153,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
                     // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
                     errorLabel.isHidden = true
+                    objectToHide -= 1
                 }
-                objectToHide -= 1
+               
             }
         }
         else{
@@ -167,7 +167,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
                     for i in 0...object.count - 1{
-                        if node == object[i] {
+                        if object[i] == node {
+                            objectToFind -= 1
+                            if objectToFind > 0 {
+                                node.isHidden = true
+                                return
+                            }
                             timer.invalidate()
                             players[playerNext - 1].score = time
                             if playerNext == players.count {
@@ -175,6 +180,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                                 hideButton.isHidden = false
                                 
                                 timerLabel.isHidden = true
+                                objectToFind = objects
                                 node.removeFromParentNode()
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                 let viewController = storyboard.instantiateViewController(withIdentifier: "victory")as! VictoryViewController
@@ -189,6 +195,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                                 if playerNext < players.count {
                                     playerNext += 1
                                 }
+                                objectToFind = objects
                             }
                             return
                             
@@ -249,21 +256,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func onButtonClick(_ sender: Any) {
-        for i in 0...object.count - 1{
-            if object[i] == nil {
-                zeroObject()
-            }
-            else {
-                hide = false
-                hideButton.isHidden = true
-                readyView.isHidden = false
-                goButton.isHidden = false
-                readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
-                if playerNext < players.count {
-                    playerNext += 1
-                }
+        if object.count == 0 {
+            zeroObject()
+        }
+        else if objectToHide > 0 {
+            hideOneMore()
+        }
+        else {
+            hide = false
+            hideButton.isHidden = true
+            readyView.isHidden = false
+            goButton.isHidden = false
+            readyPlayer.text = "C'est au tour de \(players[playerNext].name)"
+            if playerNext < players.count {
+                playerNext += 1
             }
         }
+    }
+    
+    func hideOneMore(){
+        errorLabel.isHidden = false
+        errorLabel.text = "Veuillez cacher un objet en plus"
     }
     
     @objc func updateTimer(){
