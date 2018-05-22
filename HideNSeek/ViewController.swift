@@ -20,6 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let nodeName = "shiba"
     var objectPosition : [SCNVector3!] = []
     var object : [SCNNode!] = []
+    var objectFind : [Bool] = []
     var timer = Timer()
     var sceneLight : SCNLight!
     var playerNext = 0
@@ -157,6 +158,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                
             }
+            else {
+                tooMuchObject()
+            }
         }
         else{
             let location = touches.first!.location(in: sceneView)
@@ -166,11 +170,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    for i in 0...object.count - 1{
-                        if object[i] == node {
+                    for i in 0...object.count - 1 {
+                        if object[i] == node && objectFind[i] == false {
+                            objectFind[i] = true
+                            object[i].isHidden = true
                             objectToFind -= 1
                             if objectToFind > 0 {
-                                node.isHidden = true
                                 return
                             }
                             timer.invalidate()
@@ -178,7 +183,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                             if playerNext == players.count {
                                 hide = true
                                 hideButton.isHidden = false
-                                
                                 timerLabel.isHidden = true
                                 objectToFind = objects
                                 node.removeFromParentNode()
@@ -187,7 +191,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                                 self.present(viewController, animated: true, completion: nil)
                             }
                             else {
-                                node.isHidden = true
                                 hideButton.isHidden = true
                                 readyView.isHidden = false
                                 goButton.isHidden = false
@@ -229,11 +232,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let currentPositionOfCamera = SCNVector3(orientation.x + location.x, orientation.y + location.y, orientation.z + location.z)
             for i in 0...object.count - 1 {
                 if objectPosition[i] != nil {
-                    let distance = calculateDistance(from: objectPosition[i], to: currentPositionOfCamera)
-                    if distance < 1{
-                        object[i].isHidden = false
-                    }else{
-                        object[i].isHidden = true
+                    if objectFind[i] == false {
+                        let distance = calculateDistance(from: objectPosition[i], to: currentPositionOfCamera)
+                        if distance < 1{
+                            object[i].isHidden = false
+                        }else{
+                            object[i].isHidden = true
+                        }
                     }
                 }
             }
@@ -250,6 +255,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(modelClone)
                 self.objectPosition.append(SCNVector3Make(anchor.transform.columns.3.x,anchor.transform.columns.3.y,anchor.transform.columns.3.z))
                 self.object.append(modelClone)
+                self.objectFind.append(false)
             }
         }
 
@@ -271,6 +277,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if playerNext < players.count {
                 playerNext += 1
             }
+            errorLabel.isHidden = true
         }
     }
     
@@ -291,8 +298,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
         readyView.isHidden = true
         goButton.isHidden = true
-        for obj in object {
-            obj?.isHidden = false
+        for i in 0...object.count - 1 {
+            object[i].isHidden = false
+            objectFind[i] = false
         }
     }
     
@@ -301,6 +309,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         errorLabel.text = "Veuillez cacher un objet"
     }
     
+    func tooMuchObject() {
+        errorLabel.isHidden = false
+        errorLabel.text = "Vous avez caché assez d'objets"
+    }
     
     func printTime() -> String {
         var minutes = "00"

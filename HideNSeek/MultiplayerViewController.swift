@@ -11,7 +11,7 @@ import UIKit
 class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let player = ["1","2","3","4"]
-    var rows = 0
+    var rows = 1
     
     @IBOutlet weak var choiceBox: UIPickerView!
     @IBOutlet weak var joueur1Label: UILabel!
