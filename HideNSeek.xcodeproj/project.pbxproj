@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F003523E20AEA7C600A4D13A /* MultiObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003523D20AEA7C600A4D13A /* MultiObjectViewController.swift */; };
+		F010481F20AC431300619DA2 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010481D20AC431300619DA2 /* FocusSquare.swift */; };
+		F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010481E20AC431300619DA2 /* FocusSquareSegment.swift */; };
+		F010482320AC4A4600619DA2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010482220AC4A4600619DA2 /* Utilities.swift */; };
+		F05BC70E20AD66ED003AB662 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */; };
 		F064B73620AC0EA000DB1BDF /* VictoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */; };
 		F08411EA20A97EAF00BB9ED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */; };
 		F08411EC20A97EAF00BB9ED6 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F08411EB20A97EAF00BB9ED6 /* art.scnassets */; };
@@ -40,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		F003523D20AEA7C600A4D13A /* MultiObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiObjectViewController.swift; sourceTree = "<group>"; };
+		F010481D20AC431300619DA2 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		F010481E20AC431300619DA2 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		F010482220AC4A4600619DA2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VirtualObjectARView.swift; path = ../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/VirtualObjectARView.swift; sourceTree = "<group>"; };
 		F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryViewController.swift; sourceTree = "<group>"; };
 		F08411E620A97EAF00BB9ED6 /* HideNSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideNSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08411E920A97EAF00BB9ED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +92,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F010481C20AC431300619DA2 /* Focus Square */ = {
+			isa = PBXGroup;
+			children = (
+				F010481D20AC431300619DA2 /* FocusSquare.swift */,
+				F010481E20AC431300619DA2 /* FocusSquareSegment.swift */,
+			);
+			name = "Focus Square";
+			path = "../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/Focus Square";
+			sourceTree = "<group>";
+		};
+		F010482120AC4A4600619DA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F010482220AC4A4600619DA2 /* Utilities.swift */,
+			);
+			name = Utilities;
+			path = ../../../Downloads/Handling3DInteractionAndUIControlsInAugmentedReality/ARKitInteraction/Utilities;
+			sourceTree = "<group>";
+		};
 		F08411DD20A97EAF00BB9ED6 = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +139,10 @@
 				F08411ED20A97EAF00BB9ED6 /* ViewController.swift */,
 				F08411EF20A97EAF00BB9ED6 /* Main.storyboard */,
 				F08411F220A97EB000BB9ED6 /* Assets.xcassets */,
+				F010482120AC4A4600619DA2 /* Utilities */,
 				F08411F420A97EB000BB9ED6 /* LaunchScreen.storyboard */,
+				F05BC70D20AD66ED003AB662 /* VirtualObjectARView.swift */,
+				F010481C20AC431300619DA2 /* Focus Square */,
 				F08411F720A97EB000BB9ED6 /* Info.plist */,
 				F064B73520AC0EA000DB1BDF /* VictoryViewController.swift */,
 				F0F6B85220AD53F0009C0C5B /* Multiplayer.swift */,
@@ -272,6 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05BC70E20AD66ED003AB662 /* VirtualObjectARView.swift in Sources */,
+				F010482320AC4A4600619DA2 /* Utilities.swift in Sources */,
+				F010482020AC431300619DA2 /* FocusSquareSegment.swift in Sources */,
+				F010481F20AC431300619DA2 /* FocusSquare.swift in Sources */,
 				F0F6B85320AD53F0009C0C5B /* Multiplayer.swift in Sources */,
 				F0F6B85520AD54C5009C0C5B /* MultiplayerViewController.swift in Sources */,
 				F08411EE20A97EAF00BB9ED6 /* ViewController.swift in Sources */,
@@ -528,8 +562,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LS5CMHAM9F;
+				DEVELOPMENT_TEAM = 7475WCKUB8;
 				INFOPLIST_FILE = HideNSeekUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,6 +573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HideNSeek;
@@ -548,8 +584,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LS5CMHAM9F;
+				DEVELOPMENT_TEAM = 7475WCKUB8;
 				INFOPLIST_FILE = HideNSeekUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ensisa.projet.HideNSeekUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HideNSeek;

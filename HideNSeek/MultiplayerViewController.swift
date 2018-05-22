@@ -11,6 +11,7 @@ import UIKit
 class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     let player = ["1","2","3","4"]
+
     var rows = 1
     
     @IBOutlet weak var choiceBox: UIPickerView!
@@ -25,7 +26,9 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var play: UIButton!
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+
         let text = player[row]
+
         let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 15.0)!,NSAttributedStringKey.foregroundColor:UIColor.white])
         return attribute
     }
@@ -103,6 +106,7 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             else {
                 player2.name = "Joueur2"
             }
+
             players.append(player2)
         }
         if rows >= 3 {
@@ -126,6 +130,4 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             players.append(player4)
         }
     }
-    
-
 }
