@@ -21,7 +21,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     var objectPosition : [SCNVector3!] = []
     var object : [SCNNode!] = []
     let objectNames = ["candle", "chair", "cup", "lamp", "painting", "shiba", "stickyNote", "vase"]
-    let objectName = ["bougie", "chaise", "café", "lampe", "peinture", "chien", "post-it", "vase"]
+    let objectName = ["Bougie", "Chaise", "Café", "Lampe", "Peinture", "Chien", "Post-it", "Vase"]
     var objectFind : [Bool] = []
     var timer = Timer()
     var sceneLight : SCNLight!
