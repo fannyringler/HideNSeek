@@ -130,4 +130,27 @@ class MultiplayerViewController: UIViewController, UIPickerViewDelegate, UIPicke
             players.append(player4)
         }
     }
+    
+    @IBAction func player1Exit(_ sender: UITextField) {
+        joueur1Name.resignFirstResponder()
+    }
+    
+    @IBAction func player2Exit(_ sender: UITextField) {
+        joueur2Name.resignFirstResponder()
+    }
+    
+    @IBAction func player3Exit(_ sender: UITextField) {
+        joueur3Name.resignFirstResponder()
+    }
+    
+    @IBAction func player4Exit(_ sender: Any) {
+        joueur4Name.resignFirstResponder()
+    }
+    
+    @IBAction func backgroundTap(_ sender: UIControl) {
+        joueur1Name.resignFirstResponder()
+        joueur2Name.resignFirstResponder()
+        joueur3Name.resignFirstResponder()
+        joueur4Name.resignFirstResponder()
+    }
 }

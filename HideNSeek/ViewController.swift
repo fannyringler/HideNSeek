@@ -194,10 +194,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                     // Get a transformation matrix with the euler angle of the camera
                     let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
                     var finalTransform:simd_float4x4
-                    if let hitTest = smartHitTest(screenCenter) {
-                        let verticaltransform = simd_mul(hitTest.worldTransform,rotate)
-                        finalTransform = simd_mul(hit.worldTransform, verticaltransform)
-                    }else{
+                    let hitTest = sceneView.hitTest(screenCenter, types: .existingPlane).filter { (result) -> Bool in
+                        return (result.anchor as? ARPlaneAnchor)?.alignment == ARPlaneAnchor.Alignment.vertical
+                        }.first
+                    if (hitTest != nil) {
+                        let verticaltransform = smartHitTest(screenCenter)
+                        finalTransform = (verticaltransform?.worldTransform)!
+                    }else {
                         // Combine both transformation matrices
                         finalTransform = simd_mul(hit.worldTransform,rotate)
                     }
