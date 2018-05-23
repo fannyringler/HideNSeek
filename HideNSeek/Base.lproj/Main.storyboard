@@ -22,8 +22,8 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS" customClass="VirtualObjectARView" customModule="HideNSeek" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDY-Vd-3AN">
-                                <rect key="frame" x="284" y="448" width="75" height="199"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDY-Vd-3AN">
+                                <rect key="frame" x="251" y="597" width="108" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -498,6 +498,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xKS-kI-HKa"/>
-        <segue reference="TcQ-9k-YyT"/>
+        <segue reference="WTF-am-erl"/>
     </inferredMetricsTieBreakers>
 </document>

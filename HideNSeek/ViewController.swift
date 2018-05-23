@@ -91,6 +91,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
         
         sceneView.scene.rootNode.addChildNode(lightNode)
        
+        if nodeName == "shiba"{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/shiba/shiba.dae")!
+        }else{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/\(nodeName)/\(nodeName).scn")!
+        }
+        
+        nodeModel =  modelScene.rootNode.childNode(
+            withName: nodeName, recursively: true)
     }
     
     func setupCamera() {
@@ -162,11 +172,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    for i in 0...object.count - 1  {
-                        if object[i] == node {
-                            object.remove(at: i)
-                            objectPosition.remove(at: i)
-                        }
+                    if let index = object.index(where: { $0 == node }) {
+                        object.remove(at: index)
+                        objectPosition.remove(at: index)
                     }
                     node.removeFromParentNode()
                     objectToHide += 1
@@ -244,7 +252,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
         if let node = nodeFound {
-            if node.name == nodeName {
+            if let index = objectNames.index(where: { $0 == node.name }) {
                 return node
             } else if let parent = node.parent {
                 return getParent(parent)
@@ -483,7 +491,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
         
         let text = objectNames[row]
         
-        let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedStringKey.foregroundColor:UIColor.red])
+        let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedStringKey.foregroundColor:UIColor(red: 250/255, green: 128/255, blue: 114/255, alpha: 1)])
         return attribute
     }
     
