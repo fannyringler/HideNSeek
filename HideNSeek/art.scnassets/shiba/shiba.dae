@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2018-05-22T06:55:06Z</created>
-  <modified>2018-05-22T06:55:06Z</modified>
+  <created>2018-05-22T15:03:50Z</created>
+  <modified>2018-05-22T15:03:50Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
@@ -151,7 +151,7 @@
  <library_visual_scenes>
   <visual_scene id="scene13">
    <node id="Cylinder_001" name="shiba">
-    <matrix>-0.05 4.371139e-09 0 0 -4.371139e-09 -0.05 0 0 0 0 0.05 0.2227133 0 0 0 1 </matrix>
+    <matrix>-0.05 4.371139e-09 0 0 -4.371139e-09 -0.05 0 0 0 0 0.05 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry3">
      <bind_material>
       <technique_common>

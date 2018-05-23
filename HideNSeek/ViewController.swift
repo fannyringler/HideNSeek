@@ -12,14 +12,16 @@ import ARKit
 
 var players : [Multiplayer] = []
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var time = 0
     var hide : Bool = true
     var nodeModel:SCNNode!
-    let nodeName = "shiba"
+    var nodeName = "candle"
     var objectPosition : [SCNVector3!] = []
     var object : [SCNNode!] = []
+    let objectNames = ["candle", "chair", "cup", "lamp", "painting", "shiba", "stickyNote", "vase"]
+    let objectName = ["Bougie", "Chaise", "Café", "Lampe", "Peinture", "Chien", "Post-it", "Vase"]
     var objectFind : [Bool] = []
     var timer = Timer()
     var sceneLight : SCNLight!
@@ -27,6 +29,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var objectToHide = objects
     var objectToFind = objects
     var test : SCNNode!
+    var modelScene = SCNScene()
+    
     
     var focusSquare = FocusSquare()
     
@@ -41,6 +45,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
 
+
+    @IBOutlet weak var objectAvailable: UIPickerView!
     @IBOutlet weak var findLabel: UILabel!
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
@@ -59,6 +65,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         timerLabel.isHidden = true
         readyView.isHidden = true
         goButton.isHidden = true
+        objectAvailable.isHidden = false
         findLabel.text = "Objet à cacher : \(objectToHide)"
         // Set the view's delegate
         sceneView.delegate = self
@@ -87,9 +94,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         lightNode.position = SCNVector3(x:0 ,y:10 ,z:2)
         
         sceneView.scene.rootNode.addChildNode(lightNode)
-        
-        let modelScene = SCNScene(named:
-            "art.scnassets/shiba/shiba.dae")!
+       
+        if nodeName == "shiba"{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/shiba/shiba.dae")!
+        }else{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/\(nodeName)/\(nodeName).scn")!
+        }
         
         nodeModel =  modelScene.rootNode.childNode(
             withName: nodeName, recursively: true)
@@ -164,12 +176,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 sceneView.hitTest(location, options: hitTestOptions)
             if let hit = hitResults.first {
                 if let node = getParent(hit.node) {
-                    for i in 0...object.count - 1  {
-                        if object[i] == node {
-                            object.remove(at: i)
-                            objectPosition.remove(at: i)
-                            break
-                        }
+                    if let index = object.index(where: { $0 == node }) {
+                        object.remove(at: index)
+                        objectPosition.remove(at: index)
                     }
                     node.removeFromParentNode()
                     objectToHide += 1
@@ -250,7 +259,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
         if let node = nodeFound {
-            if node.name == nodeName {
+            if let index = objectNames.index(where: { $0 == node.name }) {
                 return node
             } else if let parent = node.parent {
                 return getParent(parent)
@@ -295,7 +304,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
                 let modelClone = self.nodeModel.clone()
-                print(modelClone.scale)
                 modelClone.position = SCNVector3Zero
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
@@ -314,6 +322,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             hideOneMore()
         }
         else {
+            objectAvailable.isHidden = true
             hide = false
             hideButton.isHidden = true
             readyView.isHidden = false
@@ -387,9 +396,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     func updateFocusSquare() {
-        
-        
-
         // Perform hit testing only when ARKit tracking is in a good state.
         if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
             let result = self.smartHitTest(screenCenter) {
@@ -477,5 +483,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         default:
             return nil
         }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return objectNames.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        let text = objectName[row]
+        
+        let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedStringKey.foregroundColor:UIColor(red: 250/255, green: 128/255, blue: 114/255, alpha: 1)])
+        return attribute
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.nodeName = objectNames[row]
+        if nodeName == "shiba"{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/shiba/shiba.dae")!
+        }else{
+            self.modelScene = SCNScene(named:
+                "art.scnassets/\(nodeName)/\(nodeName).scn")!
+        }
+        
+        nodeModel =  modelScene.rootNode.childNode(
+            withName: nodeName, recursively: true)
     }
 }
