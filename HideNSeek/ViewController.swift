@@ -63,6 +63,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
         timerLabel.isHidden = true
         readyView.isHidden = true
         goButton.isHidden = true
+        objectAvailable.isHidden = false
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -315,6 +316,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
             hideOneMore()
         }
         else {
+            objectAvailable.isHidden = true
             hide = false
             hideButton.isHidden = true
             readyView.isHidden = false
@@ -387,9 +389,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     
     func updateFocusSquare() {
-        
-        
-
         // Perform hit testing only when ARKit tracking is in a good state.
         if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
             let result = self.smartHitTest(screenCenter) {
