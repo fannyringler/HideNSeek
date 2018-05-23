@@ -45,7 +45,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     @IBOutlet var sceneView: ARSCNView!
 
+
     @IBOutlet weak var objectAvailable: UIPickerView!
+    @IBOutlet weak var findLabel: UILabel!
     @IBOutlet weak var readyView: UIView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var readyPlayer: UILabel!
@@ -64,6 +66,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
         readyView.isHidden = true
         goButton.isHidden = true
         objectAvailable.isHidden = false
+        findLabel.text = "Objet à cacher : \(objectToHide)"
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -179,6 +182,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                     }
                     node.removeFromParentNode()
                     objectToHide += 1
+                    findLabel.text = "Objet à cacher : \(objectToHide)"
                     return
                 }
             }
@@ -197,6 +201,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                     // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
                     errorLabel.isHidden = true
                     objectToHide -= 1
+                    findLabel.text = "Objet à cacher : \(objectToHide)"
                 }
                
             }
@@ -217,6 +222,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                             objectFind[i] = true
                             object[i].isHidden = true
                             objectToFind -= 1
+                            findLabel.text = "Objet à trouver : \(objectToFind)"
                             if objectToFind > 0 {
                                 return
                             }
@@ -346,6 +352,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     @IBAction func go(_ sender: Any) {
         timerLabel.isHidden = false
+        findLabel.text = "Objet à trouver : \(objectToFind)"
         time = 0
         timerLabel.text = printTime()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateTimer), userInfo: nil, repeats: true)
