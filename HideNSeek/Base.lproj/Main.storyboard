@@ -326,7 +326,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kyC-Ms-UYa">
                                 <rect key="frame" x="42" y="143.5" width="290" height="437.5"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">HideNSeek est une application de Réalitée Augmentée développée par Florian JABY et Fanny RINGLER lors du projet de fin d'année de 2ème année IR en mai 2018.  Cette application utilise la réalitée augmentée pour jouer au célèbre jeu cache cache.</string>
+                                <string key="text">HideNSeek est une application de Réalité Augmenté développée par Florian JABY et Fanny RINGLER lors du projet de fin d'année de 2ème année IR en mai 2018.  Cette application utilise la réalitée augmentée pour jouer au célèbre jeu cache-cache.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -609,7 +609,7 @@
         <image name="HideNSeekHome" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MwL-vp-YLG"/>
+        <segue reference="xKS-kI-HKa"/>
         <segue reference="WTF-am-erl"/>
     </inferredMetricsTieBreakers>
 </document>
