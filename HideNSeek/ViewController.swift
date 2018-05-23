@@ -21,6 +21,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     var objectPosition : [SCNVector3!] = []
     var object : [SCNNode!] = []
     let objectNames = ["candle", "chair", "cup", "lamp", "painting", "shiba", "stickyNote", "vase"]
+    let objectName = ["bougie", "chaise", "café", "lampe", "peinture", "chien", "post-it", "vase"]
     var objectFind : [Bool] = []
     var timer = Timer()
     var sceneLight : SCNLight!
@@ -29,7 +30,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     var objectToFind = objects
     var test : SCNNode!
     var modelScene = SCNScene()
-    var virtualObject : [VirtualObject!] = []
     
     
     var focusSquare = FocusSquare()
@@ -488,7 +488,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        let text = objectNames[row]
+        let text = objectName[row]
         
         let attribute = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedStringKey.foregroundColor:UIColor(red: 250/255, green: 128/255, blue: 114/255, alpha: 1)])
         return attribute
