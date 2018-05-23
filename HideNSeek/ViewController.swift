@@ -190,12 +190,20 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
                 let hitResultsFeaturePoints: [ARHitTestResult] =
                     sceneView.hitTest(screenCenter, types: .featurePoint)
                 if let hit = hitResultsFeaturePoints.first {
+                    
                     // Get a transformation matrix with the euler angle of the camera
                     let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
-                    
-                    // Combine both transformation matrices
-                    let finalTransform = simd_mul(hit.worldTransform, rotate)
-                    
+                    var finalTransform:simd_float4x4
+                    let hitTest = sceneView.hitTest(screenCenter, types: .existingPlane).filter { (result) -> Bool in
+                        return (result.anchor as? ARPlaneAnchor)?.alignment == ARPlaneAnchor.Alignment.vertical
+                        }.first
+                    if (hitTest != nil) {
+                        let verticaltransform = smartHitTest(screenCenter)
+                        finalTransform = (verticaltransform?.worldTransform)!
+                    }else {
+                        // Combine both transformation matrices
+                        finalTransform = simd_mul(hit.worldTransform,rotate)
+                    }
                     // Use the resulting matrix to position the anchor
                     sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
                     // sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))

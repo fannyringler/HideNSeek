@@ -354,7 +354,7 @@
         <scene sceneID="AUa-MN-51i">
             <objects>
                 <viewController storyboardIdentifier="multiplayer" id="2zp-C5-Q9C" customClass="MultiplayerViewController" customModule="HideNSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tSx-rT-iAw">
+                    <view key="view" contentMode="scaleToFill" id="tSx-rT-iAw" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -363,24 +363,36 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="player1Exit:" destination="2zp-C5-Q9C" eventType="editingDidEndOnExit" id="H0g-bi-v4b"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzW-Gf-7sy">
                                 <rect key="frame" x="186" y="377" width="166" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="player2Exit:" destination="2zp-C5-Q9C" eventType="editingDidEndOnExit" id="Rye-l7-Ktf"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uad-T0-eYe">
                                 <rect key="frame" x="186" y="437" width="166" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="player3Exit:" destination="2zp-C5-Q9C" eventType="editingDidEndOnExit" id="NUs-HM-8le"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqK-0f-5oM">
                                 <rect key="frame" x="186" y="496" width="166" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="player4Exit:" destination="2zp-C5-Q9C" eventType="editingDidEndOnExit" id="IAp-JZ-AZ7"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du joueur 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPV-oP-QDT">
                                 <rect key="frame" x="24" y="320" width="148" height="26"/>
@@ -461,6 +473,9 @@
                             <constraint firstItem="rPV-oP-QDT" firstAttribute="leading" secondItem="Ri6-Ck-ym5" secondAttribute="leading" id="zio-jV-ZI6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4NW-se-Xhb"/>
+                        <connections>
+                            <action selector="backgroundTap:" destination="2zp-C5-Q9C" eventType="touchDown" id="FNL-6G-qAr"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="choiceBox" destination="n8C-El-bxo" id="fze-Wo-MjB"/>
