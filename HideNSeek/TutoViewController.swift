@@ -48,6 +48,22 @@ class TutoViewController: UIViewController {
         }
     }
     
+    @IBAction func onImageClicked(_ sender: Any) {
+        imageToShow += 1
+        if imageToShow <= textToShow.count {
+            image?.image = UIImage(named: "Tuto\(imageToShow)")
+            text.text = textToShow[imageToShow - 1]
+            backButton.isHidden = false
+            if imageToShow == textToShow.count {
+                nextButton.setTitle("Jouer", for: .normal)
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "multiplayer")as! MultiplayerViewController
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func onBack(_ sender: Any) {
         imageToShow -= 1
         if imageToShow > 0 {
