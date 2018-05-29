@@ -148,8 +148,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate,
     
     func calculateDistance(from:SCNVector3,to:SCNVector3) -> Float{
         let x = from.x - to.x
-        let y = from.y - to.y
-        return sqrtf( (x * x) + (y * y))
+        let z = from.z - to.z
+        return sqrtf( (x * x) + (z * z))
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
